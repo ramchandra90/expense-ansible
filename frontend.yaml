@@ -20,7 +20,7 @@
   
   - name: create html directory
     ansible.builtin.file:
-      path: /usr/share/nginxx/html
+      path: /usr/share/nginxx/htmls
       state: directory
 
   - name: download the frontend code
@@ -33,16 +33,6 @@
       src: /tmp/frontend.zip
       dest: /usr/share/nginx/html
       remote_src: yes
-  - name: Check if /usr/share/nginx/html directory exists
-    stat:
-     path: /usr/share/nginx/html
-     register: result
-
-- name: Debug directory existence
-  debug:
-    msg: "Directory exists"
-  when: result.stat.exists
-
 
   - name: copy expense conf
     ansible.builtin.copy:
