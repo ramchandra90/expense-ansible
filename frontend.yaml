@@ -4,24 +4,23 @@
   tasks:
   - name: install nginx server
     ansible.builtin.package:
-      name: ngnix
+      name: nginx
       state: present
-
   - name: start nginx server
     ansible.builtin.service:
-      name: ngnix
+      name: nginx
       state: started
       enabled: yes 
 
   - name: remove html directory
     ansible.builtin.file:
-      path: /usr/share/ngnix/html
+      path: /usr/share/nginx/html
       state: absent
 
   
   - name: create html directory
     ansible.builtin.file:
-      path: /usr/share/ngnix/html
+      path: /usr/share/nginxx/html
       state: directory
 
   - name: download the frontend code
@@ -42,6 +41,6 @@
 
   - name: restart nginx
     ansible.builtin.service:
-      name: ngnix
+      name: nginx
       state: restarted
 
